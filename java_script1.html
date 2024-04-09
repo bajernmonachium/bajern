@@ -1,26 +1,32 @@
+
 <HTML>
 <HEAD>
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-2">
 <SCRIPT LANGUAGE= "JavaScript" type= "text/javascript">
 <!-- Ukrycie przed przeglądarkami nie obsługującymi JavaScriptów
-var timerID = null
-function wyswietlCzas()
+var liczbaBanerow = 3;
+var timeout = 30;
+function printBanner()
 {
-  var data = new Date();
-  var godziny = data.getHours();
-  var minuty = data.getMinutes();
-  var sekundy = data.getSeconds();
-  var czas = godziny;
-  czas += ((minuty < 10) ? ":0" : ":") + minuty;
-  czas += ((sekundy < 10) ? ":0" : ":") + sekundy;
-  window.status = czas;
-  timerID = setTimeout("wyswietlCzas()",1000);
+  num = Math.floor(Math.random() * liczbaBanerow + 1);
+  name = "banner" + num + ".gif";
+  tekst = "<IMG SRC='" + name + "'>";
+  document.getElementById("bannerLayer").innerHTML=tekst;
+  timerID = setTimeout("printBanner()", timeout * 1000);
 }
 // Koniec kodu JavaScript -->
 </SCRIPT>
 </HEAD>
-<BODY onLoad="wyswietlCzas()">
-Tutaj znajduje się treść strony
+<BODY onLoad="printBanner()">
+<DIV
+  ID="bannerLayer"
+  STYLE="
+    visibility: visible;
+    position: absolute;
+    top: 20;
+    left: 20;"
+>
+</DIV>
 </BODY>
 </HTML>
  
